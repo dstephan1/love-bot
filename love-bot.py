@@ -22,7 +22,7 @@ async def on_message(message):
         await bot.send_message(message.channel, 'foo')
         print("message channel", message.channel)
 
-    if "LOVE ME" in message.content:
+    if "love me" in message.content.lower():
         global voiceclient
         voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
         await asyncio.sleep(.3)
