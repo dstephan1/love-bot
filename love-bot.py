@@ -2,8 +2,6 @@ import discord
 import asyncio
 import sys
 
-from discord.ext.commands import Bot
-
 bot = discord.Client()
 if not discord.opus.is_loaded():
     print("manual load opus?")
@@ -35,11 +33,6 @@ async def on_message(message):
 
     if message.content.startswith('shh'):
         print("done")
-
-
-def play_sound():
-    player = voiceclient.create_ffmpeg_player('nico.mp3', after=done_playing)
-    player.start()
 
 def done_playing():
     bot.loop.create_task(voiceclient.disconnect())
