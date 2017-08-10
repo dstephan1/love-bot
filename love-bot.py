@@ -57,6 +57,12 @@ async def on_message(message):
         player = voiceclient.create_ffmpeg_player('you are like a little baby.wav', after=done_playing)
         player.start() 
         
+    if "feed me" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('feed me.mp4', after=done_playing)
+        player.start() 
+        
     if message.content.startswith('!leave'):
         await voiceclient.disconnect()
         print("disconnect")
