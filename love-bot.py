@@ -39,6 +39,12 @@ async def on_message(message):
         player = voiceclient.create_ffmpeg_player('birdmigration.wav', after=done_playing)
         player.start()
         
+    if "ipod" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('ipod.wav', after=done_playing)
+        player.start()
+        
     if message.content.startswith('!leave'):
         await voiceclient.disconnect()
         print("disconnect")
