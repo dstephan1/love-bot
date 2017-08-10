@@ -16,26 +16,24 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    global voiceclient
     if message.content.startswith('!foo'):
         await bot.send_message(message.channel, 'foo')
         print("message channel", message.channel)
 
     if "love me" in message.content.lower():
-        global voiceclient
         voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
         await asyncio.sleep(.3)
         player = voiceclient.create_ffmpeg_player('nico.mp3', after=done_playing)
         player.start()
 
     if "im a weeb" in message.content.lower():
-        global voiceclient
         voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
         await asyncio.sleep(.3)
         player = voiceclient.create_ffmpeg_player('sadoaiya.wav', after=done_playing)
         player.start()
         
     if "bird migration" in message.content.lower():
-        global voiceclient
         voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
         await asyncio.sleep(.3)
         player = voiceclient.create_ffmpeg_player('birdmigration.wav', after=done_playing)
