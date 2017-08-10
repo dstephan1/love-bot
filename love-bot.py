@@ -63,6 +63,24 @@ async def on_message(message):
         player = voiceclient.create_ffmpeg_player('feed me.mp4', after=done_playing)
         player.start() 
         
+    if "illidaddy" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('illidaddy.wav', after=done_playing)
+        player.start() 
+        
+    if "drop me" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('drop me.mp4', after=done_playing)
+        player.start() 
+        
+    if "dkoo backflip" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('dkoo backflip.mp4', after=done_playing)
+        player.start() 
+        
     if message.content.startswith('!leave'):
         await voiceclient.disconnect()
         print("disconnect")
