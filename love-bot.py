@@ -76,6 +76,42 @@ async def on_message(message):
     if "ipod" in message.content.lower():
         await play_sound(voicechannel, 'ipod.wav')
         
+    if "hol' up" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('hol\' up.wav', after=done_playing)
+        player.start() 
+        
+    if "you are like a little baby" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('you are like a little baby.wav', after=done_playing)
+        player.start() 
+        
+    if "feed me" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('feed me.mp4', after=done_playing)
+        player.start() 
+        
+    if "illidaddy" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('illidaddy.wav', after=done_playing)
+        player.start() 
+        
+    if "drop me" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('drop me.mp4', after=done_playing)
+        player.start() 
+        
+    if "dkoo backflip" in message.content.lower():
+        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
+        await asyncio.sleep(.3)
+        player = voiceclient.create_ffmpeg_player('dkoo backflip.mp4', after=done_playing)
+        player.start() 
+        
     if message.content.startswith('!leave'):
         soundboard.clear()
         await voiceclient.disconnect()
