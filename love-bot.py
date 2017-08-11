@@ -54,63 +54,32 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
+triggers = [
+    {'message': "love me", 'sound': "nico.mp3"},
+    {'message': "im a weeb", 'sound': "sadoaiya.wav"},
+    {'message': "bird migration", 'sound': "birdmigration.wav"},
+    {'message': "ipod", 'sound': "ipod.wav"},
+    {'message': "hol' up", 'sound': "hol' up.wav"},
+    {'message': "you are like a little baby", 'sound': 'you are like a little baby.wav'},
+    {'message': "feed me", 'sound': "feed me.mp4"},
+    {'message': "illidaddy", 'sound': "illidaddy.wav"},
+    {'message': "drop me", 'sound': "drop me.mp4"},
+    {'message': "dkoo backflip", 'sound': "dkoo backflip.mp4"}
+]
+
 @bot.event
 async def on_message(message):
     global voiceclient
 
     voicechannel = message.author.voice.voice_channel
 
+    for trigger in triggers:
+        if trigger['message'] in message.content.lower():
+            await play_sound(voicechannel, trigger['sound'])
+
     if message.content.startswith('!foo'):
         await bot.send_message(message.channel, 'foo')
         print("message channel", message.channel)
-
-    if "love me" in message.content.lower():
-        await play_sound(voicechannel, 'nico.mp3')
-
-    if "im a weeb" in message.content.lower():
-        await play_sound(voicechannel, 'sadoaiya.wav')
-        
-    if "bird migration" in message.content.lower():
-        await play_sound(voicechannel, 'birdmigration.wav')
-        
-    if "ipod" in message.content.lower():
-        await play_sound(voicechannel, 'ipod.wav')
-        
-    if "hol' up" in message.content.lower():
-        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
-        await asyncio.sleep(.3)
-        player = voiceclient.create_ffmpeg_player('hol\' up.wav', after=done_playing)
-        player.start() 
-        
-    if "you are like a little baby" in message.content.lower():
-        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
-        await asyncio.sleep(.3)
-        player = voiceclient.create_ffmpeg_player('you are like a little baby.wav', after=done_playing)
-        player.start() 
-        
-    if "feed me" in message.content.lower():
-        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
-        await asyncio.sleep(.3)
-        player = voiceclient.create_ffmpeg_player('feed me.mp4', after=done_playing)
-        player.start() 
-        
-    if "illidaddy" in message.content.lower():
-        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
-        await asyncio.sleep(.3)
-        player = voiceclient.create_ffmpeg_player('illidaddy.wav', after=done_playing)
-        player.start() 
-        
-    if "drop me" in message.content.lower():
-        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
-        await asyncio.sleep(.3)
-        player = voiceclient.create_ffmpeg_player('drop me.mp4', after=done_playing)
-        player.start() 
-        
-    if "dkoo backflip" in message.content.lower():
-        voiceclient = await bot.join_voice_channel(message.author.voice.voice_channel)
-        await asyncio.sleep(.3)
-        player = voiceclient.create_ffmpeg_player('dkoo backflip.mp4', after=done_playing)
-        player.start() 
         
     if message.content.startswith('!leave'):
         soundboard.clear()
