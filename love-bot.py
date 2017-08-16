@@ -56,9 +56,6 @@ async def on_ready():
 
 triggers = [
     {'message': "love me", 'sound': "nico.mp3"},
-    {'message': "im a weeb", 'sound': "sadoaiya.wav"},
-    {'message': "bird migration", 'sound': "birdmigration.wav"},
-    {'message': "ipod", 'sound': "ipod.wav"},
     {'message': "hol' up", 'sound': "hol' up.wav"},
     {'message': "you are like a little baby", 'sound': 'you are like a little baby.wav'},
     {'message': "feed me", 'sound': "feed me.mp4"},
