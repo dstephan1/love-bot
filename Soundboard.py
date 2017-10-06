@@ -10,7 +10,7 @@ class Soundboard:
 
   def load(self, file):
     outrate = 48000
-    cmd = "ffmpeg -loglevel warning -i {} -f s16le -ar {} -ac 2 pipe:1".format(shlex.quote(file), outrate)
+    cmd = "ffmpeg -loglevel panic -i {} -f s16le -ar {} -ac 2 pipe:1".format(shlex.quote(file), outrate)
     args = shlex.split(cmd)
     proc = subprocess.Popen(args, stdout=subprocess.PIPE)
     new_sound = {
